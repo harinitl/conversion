@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Converter</title>
+    <link rel="stylesheet" href="index.css">
+  </head>
+  <body>
+    <div class="container">
+      <h1>Weight Converter</h1>
+      <div>
+        <label for="inputUnit">Input Unit:</label>
+        <select id="inputUnit">
+          
+          <option value="kg">kilograms</option>
+          <option value="g">grams</option>
+          <option value="mg">milligrams</option>
+          </select>
+      </div>
+      <div>
+        <label for="outputUnit">Output Unit:</label>
+        <select id="outputUnit">
+          <option value="kg">kilograms</option>
+          <option value="g">grams</option>
+          <option value="mg">milligrams</option> 
+        </select>
+      </div>
+      <div>
+        <label for="inputValue">Input Value:</label>
+        <input type="number" id="inputValue">
+      </div>
+      <div>
+        <button onclick="weightconvert()">Convert</button>
+      </div>
+      <div>
+        <label for="outputValue">Output Value:</label>
+        <input type="number" id="outputValue" disabled>
+      </div>
+    </div>
+
+    <script>
+      function weightconvert() {
+    const inputUnit = document.getElementById("inputUnit").value;
+    const outputUnit = document.getElementById("outputUnit").value;
+    const inputValue = document.getElementById("inputValue").value;
+  
+    let outputValue = 0;
+  
+   if (inputUnit === "kg" && outputUnit === "g") { 
+      outputValue=inputValue * 1000;
+    } else if (inputUnit === "kg" && outputUnit === "mg") { 
+      outputValue=inputValue * 1000000;
+    } else if (inputUnit === "g" && outputUnit === "kg") { 
+      outputValue=inputValue * 0.001;   
+    } else if (inputUnit === "g" && outputUnit === "mg") { 
+      outputValue=inputValue * 1000; 
+    } else if (inputUnit === "mg" && outputUnit === "kg") { 
+      outputValue=inputValue * 0.000001; 
+    } else if (inputUnit === "mg" && outputUnit === "g") { 
+        outputValue=inputValue * 0.001; 
+    }
+    else {
+      outputValue = inputValue;
+  }
+  document.getElementById("outputValue").value = outputValue;
+}
+  
+    </script>
+  </body>
+</html>
